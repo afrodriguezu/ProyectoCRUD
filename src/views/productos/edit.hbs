@@ -1,0 +1,66 @@
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-header {
+            margin-bottom: 30px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="form-container mx-auto" style="max-width: 600px;">
+        <div class="form-header text-center">
+            <h2>Editar Producto</h2>
+        </div>
+        <form action="/edit/{{producto.id}}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Nombre del Producto</label>
+                <input type="text" class="form-control" id="name" placeholder="Nombre del producto" value="{{producto.nombre}}" autofocus required>
+            </div>
+            <div class="form-group">
+                <label for="description">Descripción</label>
+                <textarea class="form-control" id="description" rows="3" placeholder="Descripción del producto" value="{{producto.descripcion}}" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="price">Precio</label>
+                <input type="number" class="form-control" id="price" placeholder="Precio del producto" step="0.01" value="{{producto.precio}}" required>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Cantidad</label>
+                <input type="number" class="form-control" id="quantity" placeholder="Cantidad disponible" value="{{producto.cantidad}}" required>
+            </div>
+            <div class="form-group">
+                <label for="size">Talla</label>
+                <input type="size" class="form-control" id="size" placeholder="Talla" value="{{producto.talla}}" required>
+            </div>
+
+            {{#if persona.imagen}}
+            <div class="form-group">
+                <label for="file">Imagen</label>
+                <img src="/uploads/{{producto.imagen}}" class="card-img-top mx-auto m-2" style="width: 150px; height: 150px;display:block;">
+            </div>
+            {{/if}}
+
+            <button type="submit" class="btn btn-primary btn-block mt-3">Editar</button>
+        </form>
+    </div>
+</div>

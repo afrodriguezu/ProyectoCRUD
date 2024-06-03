@@ -1,9 +1,11 @@
 /* -------------------------- Importar dependecias -------------------------- */
 import express from 'express'
-import {engine} from 'express-handlebars';
-import morgan from 'morgan';
+import {engine} from 'express-handlebars'
+import morgan from 'morgan'
 import {join, dirname} from 'path'
 import {fileURLToPath} from 'url'
+import productosRoutes from './routes/productos.routes.js'
+import companyRoutes from './routes/company.routes.js'
 
 /* ----------------------------- Initializacion ----------------------------- */
 const app = express();
@@ -29,6 +31,9 @@ app.use(express.json());
 app.get('/', (req, res)=>{
     res.render('index');
 })
+
+app.use(productosRoutes);
+app.use(companyRoutes);
 
 /* ------------------------------ Public files ------------------------------ */
 app.use(express.static(join(__dirname, 'public')));
